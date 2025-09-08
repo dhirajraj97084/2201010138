@@ -9,6 +9,6 @@ const app = express();
 app.use(cors());            
 app.use(express.json());    
 
-app.use("/", urlRouter);
+app.use("/api/", urlRouter);
 
 app.listen(8000, () => console.log("Server running on port 8000"));

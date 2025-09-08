@@ -16,7 +16,7 @@ function App() {
       setError("");
       setShortUrl("");
       const payload = { url, validity: Number(validity), shortcode: shortcode || undefined };
-      const res = await axios.post("http://localhost:8000/shorturls", payload);
+      const res = await axios.post("http://localhost:8000/api/shorturls", payload);
       setShortUrl(res.data.shortUrl);
       setExpiry(res.data.expiry);
       setStats(null);
@@ -29,7 +29,7 @@ function App() {
     try {
       if (!shortUrl) return;
       const code = shortUrl.split("/").pop();
-      const res = await axios.get(`http://localhost:8000/shorturls/${code}/stats`);
+      const res = await axios.get(`http://localhost:8000/api/shorturls/${code}/stats`);
       setStats(res.data);
     } catch (err) {
       setError(err.response?.data?.error || "Failed to load stats");
